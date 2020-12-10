@@ -9,8 +9,9 @@ export default function HomeScreen({ navigation }) {
   return (
     <View style={[globalStyles.container, styles.container]}>
       <Image style={styles.logo} source={logo} />
+      <Text style={globalStyles.header}>Calendar</Text>
       <View style={styles.ui}>
-        <Text style={styles.text}>Here is a dummy login page. Press the button to enter</Text>
+        <Text style={[globalStyles.text, styles.text]}>Here is a dummy login page. In the future this might require auth but for now, press the button to enter</Text>
         <DefaultButton title="Calendar" onPress={() => {
           navigation.navigate('Calendar')
         }} />
@@ -32,6 +33,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   text: {
-    color: '#e2dddf'
+    margin: vw(10)
   }
 })

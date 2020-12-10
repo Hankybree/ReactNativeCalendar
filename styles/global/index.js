@@ -10,6 +10,14 @@ export default StyleSheet.create({
     backgroundColor: '#393f5f'
   },
   text: {
-    color: '#e2dddf'
+    color: '#e2dddf',
+    fontFamily: 'montserrat',
+    fontSize: vw(3),
+    textAlign: 'center'
+  },
+  header: {
+    color: '#e96d5e',
+    fontFamily: 'orbitron',
+    fontSize: vw(15)
   }
 })

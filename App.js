@@ -1,13 +1,26 @@
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
+import { useFonts } from 'expo-font'
+import { AppLoading } from 'expo'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { HomeScreen, CalendarScreen, DetailsScreen } from './screens'
+import orbitron from './assets/fonts/orbitron.ttf'
+import montserrat from './assets/fonts/montserrat.ttf'
 
 const Stack = createStackNavigator()
 
 export default function App() {
+  const [loaded] = useFonts({
+    orbitron,
+    montserrat
+  })
+  
+  if (!loaded) {
+    return <AppLoading />
+  }
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
