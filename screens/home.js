@@ -1,18 +1,37 @@
 import React from 'react'
-import { ScrollView, SafeAreaView, Text, Button } from 'react-native'
+import { StyleSheet, View, Text, Image } from 'react-native'
+import globalStyles from '../styles/global'
+import { vw } from '../services/screen'
+import logo from '../assets/images/icon.png'
+import { DefaultButton } from '../components'
 
 export default function HomeScreen({ navigation }) {
   return (
-    <ScrollView>
-      <SafeAreaView>
-        <Text>Home</Text>
-        <Button title="Calendar" onPress={() => {
+    <View style={[globalStyles.container, styles.container]}>
+      <Image style={styles.logo} source={logo} />
+      <View style={styles.ui}>
+        <Text style={styles.text}>Here is a dummy login page. Press the button to enter</Text>
+        <DefaultButton title="Calendar" onPress={() => {
           navigation.navigate('Calendar')
         }} />
-        <Button title="Details" onPress={() => {
-          navigation.navigate('Details')
-        }} />
-      </SafeAreaView>
-    </ScrollView>
+      </View>
+    </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center'
+  },
+  logo: {
+    width: vw(80),
+    height: vw(80)
+  },
+  ui: {
+    flex: 1,
+    justifyContent: 'center'
+  },
+  text: {
+    color: '#e2dddf'
+  }
+})
