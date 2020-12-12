@@ -1,11 +1,11 @@
 import { StyleSheet } from 'react-native'
-import { vh, vw } from '../../services/screen'
+import { vw, getWidth, getHeight } from '../../services/screen'
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    height: vh(100),
-    width: vw(100),
+    height: getHeight(),
+    width: getWidth(),
     paddingTop: 20,
     backgroundColor: '#393f5f'
   },
