@@ -3,9 +3,9 @@ import { View, Text } from 'react-native'
 import globalStyles from '../styles/global'
 
 export default function DetailsScreen({ route }) {
-  const { date } = route.params
+  const { date, lightStyle } = route.params
   return (
-    <View style={globalStyles.container}>
+    <View style={[lightStyle ? globalStyles.light : globalStyles.dark,globalStyles.container]}>
       <Text style={globalStyles.text}>{date}</Text>
     </View>
   )

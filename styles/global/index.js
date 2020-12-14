@@ -6,7 +6,12 @@ export default StyleSheet.create({
     flex: 1,
     height: getHeight(),
     width: getWidth(),
-    paddingTop: 20,
+    paddingTop: 20
+  },
+  dark: {
+    backgroundColor: 'black'
+  },
+  light: {
     backgroundColor: '#393f5f'
   },
   text: {

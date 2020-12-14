@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, ToastAndroid, Platform, Alert } from 'react-native'
 import globalStyles from '../styles/global'
 import { Calendar } from 'react-native-calendars'
 
-export default function CalendarScreen({ navigation }) {
+export default function CalendarScreen({ navigation, route }) {
   const [markedDates, setMarkedDates] = useState({})
+  const { lightStyle } = route.params
 
   useEffect(() => {
     fetch('https://holidayapi.com/v1/holidays?pretty&country=SE&year=2019&key=752b02dd-b7fd-43b1-89a3-06be863db585')
@@ -18,13 +19,18 @@ export default function CalendarScreen({ navigation }) {
         })
 
         setMarkedDates(holidayDates)
+        if (Platform.OS === 'android') {
+          ToastAndroid.show("Welcome!", ToastAndroid.LONG)
+        } else {
+          Alert.alert('Welcome!')
+        }
       })
   }, [])
   return (
-    <View style={[globalStyles.container, styles.container]}>
-      <Calendar theme={theme} markedDates={markedDates} onDayPress={(day) => {
+    <View style={[lightStyle ? globalStyles.light : globalStyles.dark,globalStyles.container, styles.container]}>
+      <Calendar markedDates={markedDates} onDayPress={(day) => {
         console.log(day)
-        //navigation.navigate('Details', { date: day.dateString })
+        navigation.navigate('Details', { date: day.dateString, lightStyle })
       }} />
     </View>
   )
@@ -33,9 +39,5 @@ export default function CalendarScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center'
-  },
-  calendar: {
-    // backgroundColor: 'red',
-    // height: vh(50)
   }
 })
